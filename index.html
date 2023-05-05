@@ -112,10 +112,73 @@
             </div>
         </div>
     </div>
+    <!-- First Slider -->
+<div class="product-container">
+<button class="pre-btn"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/64/external-right-arrow-arrows-dreamstale-lineal-dreamstale-13.png" alt=""></button>
+<button class="nxt-btn"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/64/external-right-arrow-arrows-dreamstale-lineal-dreamstale-13.png" alt=""></button>
+    <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/Events/img23/MayART23/GW_HERO-PC_NTA_V2_2X._CB589493704_.jpg" alt="err">
+    </div>
+    <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/MayART/Event/Hero/PC-Unrec-3000-AF._CB591081811_.jpg" alt="err">
+    </div>
+    <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/CEPC/May-ART/GW/Tallhero_3000x1200_set_3._CB589336404_.jpg" alt="err">
+    </div>
+</a>
+    <div class="product-card">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/CookwareDining/MayART23/Gateway/MainEvent/KD_Unrec_PC_3000x1200._CB589367505_.jpg" alt="err">
+    </div>
+    <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/May/MayART/ATF/Jewellery/V1/V1_Jewellry_rec_3000._CB590901896_.jpg" alt="err">
+    </div>
+</a>
+    <div class="product-card">
+       <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Cons/MayART23/GW/X-GL/UnRec2_NonPEA_PC_3000._CB590875252_.jpg" alt="err">
+    </div>
+    <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/IN/OHL/GW/MayART/Main/Hero/1/3/Rec_PC_hero_1_2x._CB589392810_.jpg" alt="err">
+    </div>
+    <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/Events/img23/MayART23/GW_HERO-PC_NTA_V2_2X._CB589493704_.jpg" alt="err">
+    </div>
+    <div class="absolute_append">
+       <div>
+        <h3>Great Summer sale</h3>
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IN-Events/MayArt23/GW_PC-CC_1X._SY304_CB589490148_.jpg" alt="error">
+        <p>see all</p>
+       </div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+    </div>
+    
+</div>
 </body>
 </html>
 <script>
     function toggleMobileMenu(menu) {
     menu.classList.toggle('open');
 }
+
+let productContainers =document.querySelectorAll('.product-container');
+let nxtBtn = document.querySelectorAll('.nxt-btn');
+let preBtn = document.querySelectorAll('.pre-btn');
+
+productContainers.forEach((item, i) => {
+    let containerDimenstions = item.getBoundingClientRect();
+    let containerWidth = containerDimenstions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+        item.scrollLeft -= containerWidth;
+    })
+})
 </script>
