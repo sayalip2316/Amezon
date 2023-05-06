@@ -1,7 +1,7 @@
 body{
     margin:0px;
     padding: 0px;;
-   
+   background-color: #E3E6E6;
 }
 
 /* Navigation bar */
@@ -238,24 +238,67 @@ opacity: 1;
 
 /* absolute cards */
 .absolute_append{
-    width:90%;
+    width:100%;
     height:auto;
     display: grid;
-   
     grid-template-columns: repeat(4,1fr);
     position: absolute;
     margin-top: 300px;
 }
 .absolute_append>div{
-    padding: 10px;
+    padding: 15px;
+    margin: 15px;
     background-color: white;
-    border:1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.absolute_append>div:hover{
+    cursor: pointer;
+}
+.absolute_append>div>p{
+    color: #278798;
+}
+.absolute_append>div>p:hover{
+    color: red;
+    cursor: pointer;
 }
 .absolute_append>div>img{
     width: 100%;
+    height:70%;
 }
-
-
+.small_card{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:15px;
+}
+.small_card>div>img{
+    width:100%;
+}
+.small_card>div>p{
+    font-size: 13px;
+}
+#signInSecurely{
+    background-color: transparent;
+}
+#signInSecurely>div{
+    padding: 15px;
+    background-color: white;
+    padding-bottom: 30px;
+}
+#signInSecurely>div>button{
+    width:90%;
+   display: block;
+   margin: auto;
+   border-radius: 10px;
+   border: none;
+    padding: 7px;
+    background-color: #FFD814;
+}
+#laptop{
+    width:100%;
+    height:100%;
+    height:auto;
+    margin-top: 50px;
+}
 
 
 
