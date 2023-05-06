@@ -300,9 +300,109 @@ opacity: 1;
     margin-top: 50px;
 }
 
+/* BlockBuster Deals */
+.Blockbuster_deals{
+width:100%;
+margin-top: 750px;
+box-sizing: border-box;
+padding: 15px;
+}
 
-
-
+.deals_cards>p{
+    font-size: 13px;
+}
+#deals{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+#deals>p{
+    color: #278798;
+}
+.product-container2{
+    box-sizing: border-box;
+    padding: 5px 5px;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  .product-container2::-webkit-scrollbar{
+   display: none;
+   }
+   .product-card2{
+    flex: 0 0 auto;
+    width: 200px;
+    /* height: 300px; */
+    margin-right: 30px;
+    padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+   }
+   .product-image2{
+   position: relative;
+   width: 100%;
+   /* height: 100%; */
+  /* text-align: center; */
+  }
+  .product-image2>img{
+    width:100%;
+    height:150px;
+  }
+  .product-image2>div{
+    display: flex;
+    align-items: center;
+    gap:5px;
+  }
+  .product-image2>p{
+    font-size: 12px;
+  }
+  .product-image2>div>button{
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    background-color: #CC0C39;
+    color: white;
+  }
+  .product-image2>div>p{
+    font-size: 12px;
+  }
+  .product-thumb2{
+   width: 100%;
+   /* height: 350px; */
+   /* object-fit: cover; */
+   }
+   .product-card2:hover.product-card2{
+    opacity: 1;
+   }
+   .product-card2:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   }
+   .pre-btn2, .nxt-btn2{
+    border: none; 
+    width: 4vw;
+   height: 35%;
+   position: absolute;
+   /* bottom: 0; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+   cursor: pointer;
+   z-index: 8;
+ }
+ .pre-btn2{
+left: 0;
+transform: rotate(180deg);
+}
+.nxt-btn2{
+right: 0;
+} 
+ .pre-btn2 img, .nxt-btn2 img{
+opacity: 0.2;
+} 
+.pre-btn2:hover img, .nxt-btn2:hover img{
+opacity: 1;
+}
 
 
 
