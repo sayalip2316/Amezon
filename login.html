@@ -23,7 +23,18 @@
             border:1px solid gray;
             border-radius: 5px;
         }
-        
+        #email{
+           display: block;
+           width:100%;
+           height:30px;
+           margin-bottom: 20px;
+        }
+        #password{
+            display: block;
+           width:100%;
+           height:30px;
+           margin-bottom: 20px;
+        }
         button{
             width: 100%;
             height:30px;
@@ -31,14 +42,28 @@
             border: none;
             background-color: #F7CA00;
         }
-        .signIn>form>p:nth-child(7){
+        .signIn>form>p:nth-child(4){
             font-size: 13px;
-            margin-top: 5px;
         }
-        .signIn>form>p:nth-child(8){
-            font-size: 14px;
+        .signIn>form>p:nth-child(5){
+            font-size: 13px;
+            color:#278798 ;
         }
-        
+        #new{
+            width:25%;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #new>p{
+            font-size: 13px;
+            color: #7676A2;
+            text-align: center;
+        }
+        #new>button{
+            background-color: white;
+            border: 1px solid gray;
+        }
         #Bottom{
             width: 100%;
             height: 132px;
@@ -64,45 +89,28 @@
             text-align: center;
             color: #5583B8;
         }
-        input{
-            width:100%;
-            height:25px;
-            border-radius: 5px;
-            border: 1px solid gray;
-        }
-        #signin{
-            text-align: center;
-        }
-        span{
-            color: blue;
-        }
-        span:hover{
-            cursor: pointer;
-        }
-        a{
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
     <img src="./images/smartApp.png" alt="err">
     <div class="signIn">
-        <h1>Create Account</h1>
+        <h1>Sign in</h1>
     <form>
-     <p>Your name</p>
-     <input type="text" id="name" placeholder="First and Last name">
-     <p>Email</p>
+     <p>Enter mobile phone number or email</p>
      <input type="text" id="email">
      <p>Password</p>
-     <input type="password" id="password" placeholder="At least 6 character">
-     <p>Passwords must be at least 6 characters.</p>
-     <p>By enrolling your mobile phone number, you consent to receive automated security notifications via text message from Amazon. Message and data rates may apply.</p>
-    <button onclick="logIn()">Continue</button>
+     <input type="password" id="password">
+     <button onclick="onLogin()">Continue</button>
+     <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+     <p>Need help?</p>
     </form>
-</div>
-<hr>
-<p id="signin">Already have an account? 
-    <a href="./SignIn.html"><span>Sign in</span></a></p>
+    </div>
+    <hr>
+    <div id="new">
+    <p>New to Amazon?</p>
+    <a href="./createAccount.html">
+    <button>Create your Amazon Account</button></a>
+    </div>
     <div id="Bottom">
         <div id="footer_last">
             <div>
@@ -117,3 +125,28 @@
     </div>
 </body>
 </html>
+<script>
+    const emailEl=document.getElementById("email")
+    const passwordEl=document.getElementById("password")
+
+    const onLogin=()=>{
+        event.preventDefault()
+        const payload={
+            email:emailEl.value,
+            password:passwordEl.value
+        }
+        fetch("http://localhost:4500/user/login",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify(payload)
+        }).then(res=>res.json())
+        .then((res)=>{
+            console.log(res)
+            localStorage.setItem("token",res.token)
+            alert(res.msg)
+            window.location.href="./index.html"
+        }).catch(err=>console.log(err))
+    }
+</script>
