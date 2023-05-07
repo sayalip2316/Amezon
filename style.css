@@ -476,6 +476,7 @@ hr{
 width:100%;
 height:auto;
 background-color: #232F3E;
+box-sizing: border-box;
 }
 .footer_top{
     width:80%;
@@ -496,41 +497,72 @@ background-color: #232F3E;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-/* Starting ₹99 | Amazon Brands & more */
-/* Best Selling headphones */
-
-/* .absolute_append{
-    width:100%;
-    height:auto;
-    display: grid;
-    margin:auto;
-    grid-template-columns: repeat(4,1fr);
-    position: absolute;
-    margin-top: 300px;
+#footer_icon{
+    display: flex;
+    align-items: center;
+    gap:30px;
+    margin-left: 40%;
+    padding-bottom: 20px;
     
-
 }
-.absolute_append>div{
-    width:100%;
-    border: 1px solid black;
-    background-color: white;
-    padding: 15px;
+#footer_icon>img{
+    width:200px;
 }
-
-.small_card{
-    width:100%;
+#footer_icon>select{
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+}
+#footer_icon>select>option{
+    color: #131921;
+}
+#contries{
+    text-align: center;
+    padding-bottom: 20px;
+}
+#contries>a{
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 5px;
+}
+#contries>a:hover{
+    text-decoration: underline;
+}
+.black_footer{
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap:10px;
-    /* padding: 5px; */
-/* }
-
-#mini_card{
-    width:100%;
-    height:40%;
+    margin: auto;
+    grid-template-columns: repeat(5,1fr);
+    gap:20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
+    background-color: #131921;
+    color: white;
+    font-size: 13px;
+    box-sizing: border-box;
 }
-#mini_card>button{
-    padding: 10px  20px 10px 20px;
-    border-radius: 10px;
-    background-color: #FFD814;
-/* } */ 
+#footer_last{
+    width:100%;
+    text-align: center;
+    background-color: #131921;
+    padding-bottom: 20px;
+}
+#footer_last>div:nth-child(1){
+    display: flex;
+    color: white;
+    padding-left: 39%;
+}
+#footer_last>div:nth-child(1)>p{
+    margin-right: 10px;
+    font-size: 13px;
+}
+#footer_last>div:nth-child(2){
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+
+

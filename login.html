@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+    <style>
+        body{
+            padding-top: 20px;
+        }
+        body>img{
+            width:200px;
+            display: block;
+            margin: auto;
+        }
+        .signIn{
+            width:25%;
+            margin: auto;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border:1px solid gray;
+            border-radius: 5px;
+        }
+        
+        button{
+            width: 100%;
+            height:30px;
+            border-radius: 10px;
+            border: none;
+            background-color: #F7CA00;
+        }
+        .signIn>form>p:nth-child(7){
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .signIn>form>p:nth-child(8){
+            font-size: 14px;
+        }
+        
+        #Bottom{
+            width: 100%;
+            height: 132px;
+            background-color: rgb(247, 242, 242);
+            box-sizing: border-box;
+        }
+        hr{
+            width:25%;
+            margin: auto;
+        }
+        #footer_last>div:nth-child(1){
+            display: flex;
+            font-size: 13px;
+            color: blue;
+            padding-left: 39%;
+        }
+        #footer_last>div:nth-child(1)>p{
+            font-size: 13px;
+            margin-right: 15px;
+        }
+        #footer_last>div:nth-child(2){
+            font-size: 13px;
+            text-align: center;
+            color: #5583B8;
+        }
+        input{
+            width:100%;
+            height:25px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+        #signin{
+            text-align: center;
+        }
+        span{
+            color: blue;
+        }
+        span:hover{
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/smartApp.png" alt="err">
+    <div class="signIn">
+        <h1>Create Account</h1>
+    <form>
+     <p>Your name</p>
+     <input type="text" id="name" placeholder="First and Last name">
+     <p>Email</p>
+     <input type="text" id="email">
+     <p>Password</p>
+     <input type="password" id="password" placeholder="At least 6 character">
+     <p>Passwords must be at least 6 characters.</p>
+     <p>By enrolling your mobile phone number, you consent to receive automated security notifications via text message from Amazon. Message and data rates may apply.</p>
+    <button onclick="logIn()">Continue</button>
+    </form>
+</div>
+<hr>
+<p id="signin">Already have an account? 
+    <a href="./SignIn.html"><span>Sign in</span></a></p>
+    <div id="Bottom">
+        <div id="footer_last">
+            <div>
+            <p>Conditions of Use & Sale</p>
+            <p>Privacy Notice</p>
+            <p>Interest-Based Ads</p>
+        </div>
+            <div>
+                <p>© 1996-2023, Amazon.com, Inc. or its affiliates</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
