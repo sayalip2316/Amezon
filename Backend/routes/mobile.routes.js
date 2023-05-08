@@ -136,6 +136,8 @@ mobileRouter.get("/dsc",async(req,res)=>{
         res.send(error)
     }
 })
+
+
 // mobileRouter.get("/samsumg/",async(req,res)=>{
 //     const {q}=req.query
 //     //const {no}=req.params
