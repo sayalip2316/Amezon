@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile datat</title>
+    <style>
+        .MainCont{
+            width:100%;
+            display: flex;
+            gap:10px;
+            box-sizing: border-box;
+        }
+        .MainCont>div:nth-child(1){
+            width:20%;
+        }
+         #mobileCont{
+          width:80%;
+          display: grid;
+          grid-template-columns: repeat(4,1fr);
+          gap:10px;
+          margin: 20px;
+          box-sizing: border-box;
+        }
+      .card{
+        width:100%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        box-sizing: border-box;
+        padding: 20px;
+        }
+        .card>img{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .card>p{
+            font-size: 15px;
+        }
+        .card>button{
+            display: block;
+            margin: auto;
+            padding: 10px;
+            border-radius: 5px;
+           background-color: #FFC266;
+           border: none;
+        }
+        .buttons{
+            text-align: center;
+            margin-left: 250px;
+        }
+        .buttons>button{
+            padding: 10px;
+        }
+        #brands{
+            width:80%;
+            padding: 20px;
+            margin: 20px;
+            background-color: rgb(181, 224, 240);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #brands>h3{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        #brands>button{
+            width:100%;
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+        }
+        #brands>button:hover{
+            cursor: pointer;
+            background-color: skyblue;
+        }
+        #Price{
+            width:80%;
+            padding: 20px;
+            margin: 20px;
+            background-color: rgb(181, 224, 240);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+        }
+        #Price>h3{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        #Price>button{
+            width:100%;
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+        }
+        #Price>button:hover{
+            cursor: pointer;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="MainCont">
+        <div>
+            <div id="brands">
+                <h3>Brands</h3>
+                <button onclick="samsung()">Samsung</button>
+                <button onclick="redmi()">Redmi</button>
+                <button onclick="realme()">realme</button>
+                <button onclick="tecno()">Tecno</button>
+                <button onclick="lava()">Lava</button>
+                <button onclick="nokia()">Nokia</button>
+                <button onclick="itel()">Itel</button>
+                <button onclick="oppo()">Oppo</button>
+            </div>
+            <div id="Price">
+                <h3>Price</h3>
+                <button onclick="asc()">Ascending</button>
+                <button onclick="dsc()">Descending</button>
+            </div>
+        </div>
+        <div id="mobileCont">
+        </div>
+    </div>
+    <div class="buttons">
+    <button onclick="onPageOne()">1</button>
+    <button onclick="onPageTwo()">2</button>
+    <button onclick="onPageThree()">3</button>
+    <button onclick="onPageFour()">4</button> 
+    <button onclick="onPageFive()">5</button> 
+</div>
+</body>
+</html>
+<script>
+    let container=document.getElementById("mobileCont")
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/1")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+    
+    const onPageOne=()=>{
+        function getNotes(){
+        fetch("http://localhost:4500/mobile/1")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+    }
+
+const onPageTwo=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/2")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+
+const onPageThree=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/3")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+const onPageFour=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/4")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+
+const samsung=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/samsung")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+const redmi=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/redmi")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+
+const realme=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/realme")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+
+const tecno=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/tecno")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+const lava=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/lava")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+const nokia=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/nokia")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+const itel=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/itel")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+const oppo=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/oppo")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+</script>
