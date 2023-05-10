@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to cart</title>
+    <style>
+        #container1{
+            width:80%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:10px;
+            margin-top: 50px;
+        }
+        .card{
+        width:100%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        box-sizing: border-box;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+        }
+        .card>img{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .card>p{
+            font-size: 15px;
+        }
+        /* #add-to-cart-form>button{
+            display: block;
+            margin: auto;
+            padding: 10px;
+            border-radius: 5px;
+           background-color: #FFC266;
+           border: none;
+        } */
+        .card>div>button:nth-child(1){
+            width:100%;
+            display: block;
+            margin: auto;
+            padding: 10px;
+            border-radius: 5px;
+           background-color: #FFC266;
+           border: none;
+           margin-bottom: 10px;
+        }
+        .card>div>a{
+            text-decoration: none;
+        }
+        .card>div>a>button{
+            width:100%;
+            display: block;
+            margin: auto;
+            padding: 10px;
+            border-radius: 5px;
+           background-color: #FFC266;
+           border: none;
+        }
+        /* .buttons{
+            display: flex;
+            gap:10px
+        } */
+    </style>
+</head>
+<body>
+    <div id="container1">
+    </div>
+</body>
+</html>
+<script>
+    let container=document.getElementById("container1")
+    function getNotes(){
+        fetch("http://localhost:4500/buy",{
+            method:"GET",
+            headers:{
+                "Content-type":"application/json"
+            }
+        })
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res.data)
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+            deleteProduct()
+            BuyProduct()
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <div class="buttons">
+                <button class="btn" data-id=${el._id}>Delete</button>
+                <a href="./buy.html">
+                <button class="buybtn" data-id=${el._id}>Buy</button></a>
+                </div>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+
+    function BuyProduct(){
+let cardBtn=document.querySelectorAll(".btn")
+for(let btn of cardBtn){
+    btn.addEventListener("click",function(e){
+        let id=e.target.dataset.id
+        
+        fetch(`http://localhost:4500/buy/delete/${id}`,{
+            method:"DELETE",
+            headers:{
+                "Content-type":"application/json",
+            }
+        }).then(res=>res.json()).then((res)=>{
+          alert(res.msg)
+          getNotes()
+        }).catch((err)=>{
+            console.log(err)
+        })
+    })
+}
+    }
+
+    function deleteProduct(){
+let buyBtn=document.querySelectorAll(".buybtn")
+for(let btn of buyBtn){
+    btn.addEventListener("click",function(e){
+        let id=e.target.dataset.id
+        
+        fetch(`http://localhost:4500/sold/${id}`,{
+            method:"GET",
+            headers:{
+                "Content-type":"application/json",
+            }
+        }).then(res=>res.json()).then((res)=>{
+          console.log(res)
+        //   getNotes()
+        }).catch((err)=>{
+            console.log(err)
+        })
+    })
+}
+    }
+</script>

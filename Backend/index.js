@@ -2,6 +2,8 @@ const express=require("express")
 const {connection}=require("./db")
 const {userRouter}=require("./routes/user.routes")
 const {mobileRouter}=require("./routes/mobile.routes")
+const {buyerRouter}=require("./routes/buyer.routes")
+const {soldRouter}=require("./routes/sold.route")
 const cors=require("cors")
 
 const app=express()
@@ -10,6 +12,8 @@ app.use(cors())
 
 app.use("/user",userRouter)
 app.use("/mobile",mobileRouter)
+app.use("/buy",buyerRouter)
+app.use("/sold",soldRouter)
 
 app.listen(4500,async()=>{
     try {

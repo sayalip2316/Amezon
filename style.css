@@ -270,8 +270,15 @@ opacity: 1;
     grid-template-columns: repeat(2,1fr);
     gap:15px;
 }
+.small_card>a>p{
+    text-decoration: none;
+    color:#278798 ;
+}
 .small_card>div>img{
     width:100%;
+}
+.small_card:nth-child(1){
+
 }
 .small_card>div>p{
     font-size: 13px;
@@ -564,5 +571,7 @@ box-sizing: border-box;
     color: white;
     font-size: 13px;
 }
-
+a{
+    text-decoration: none;
+}
 

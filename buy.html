@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightpink;
+        }
+        .main{
+            width:80%;
+            margin:auto;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        .container{
+            width:90%;
+            height:auto;
+            display: flex;
+            gap:30px;
+            margin: auto;
+        }
+        .card-1{
+            width:65%;
+            height:auto;
+            display:flex;
+            justify-content: space-between;
+            padding-left: 25px;
+            background-color: #F2F2F2;
+        }
+        .card-2{
+            width:35%;
+            height:auto;
+            background-color: #F2F2F2;
+           padding-left: 25px;
+           padding-right: 25px;
+            /* padding-left: 25px; */
+        }
+        .billing{
+            width:49%;
+            height:auto;
+        }
+        .payment{
+            width:49%;
+            height:auto;
+        }
+        #user{
+            width:20px;
+            height:20px;
+            margin-right: 5px;
+        }
+        #name{
+            font-size: 15px;
+            padding: 10px;
+        }
+        #email{
+            width:15px;
+            height:15px;
+            margin-right: 5px;
+        }
+        #address{
+            width:20px;
+            height:20px;
+            margin-right: 5px;
+        }
+        #city{
+            width:20px;
+            height:20px;
+            margin-right: 5px;
+        }
+        .child-1{
+            display: flex;
+            gap: 20px;
+        }
+        .child-2{
+            width:45%;
+            display: flex;
+        }
+        .child-2>img{
+            width:30%;
+            height:53px;
+            margin: auto;
+        }
+        #name-1{
+            width:50%;
+            padding: 10px;
+        }
+        #order{
+            width:55%;
+            margin-left: 60px;
+            font-size: 20px;
+            padding:5px 0px 5px 0px;
+            border: none;
+        }
+        #order:hover{
+            background-color: gray;
+            cursor: pointer;
+            color: white;
+            border-color: white;
+        }
+        #first{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #minicontainer>div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #minicontainer>div>h5{
+            color: rgb(7, 121, 243);
+        }
+        #cart{
+            width:30px;
+            height:30px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #total{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #cartpic{
+            display: flex;
+            align-items: center;
+        }
+        #cartpic>img{
+            width:20px;
+            height:20px;
+        }
+        @media screen and (min-width:500px) and (max-width:1000px) {
+            .container{
+                flex-direction:column-reverse;
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="main">
+    <div class="container">
+        <div class="card-1">
+            <div class="billing">
+                <h3>Billing Address</h3>
+                <h4>
+                    <img id="user" src="https://img.icons8.com/material-rounded/48/user.png" alt="error">Full Name</h4>
+                    <input type="text" id="name" placeholder="Sayali Jadhav">
+                    <h4><img id="email" src="https://img.icons8.com/ios-glyphs/60/new-post.png" alt="error">Email</h4>
+                    <input type="text" id="name" placeholder="jadhavsayalip@gmail.com">
+                    <h4><img id="address" src="https://img.icons8.com/ios-glyphs/60/map-marker.png" alt="error">Email</h4>
+                    <input type="text" id="name" placeholder="154W 15street">
+                    <h4><img id="city" src="https://img.icons8.com/material-outlined/48/city.png" alt="error">City</h4>
+                    <input type="text" id="name" placeholder="Kolhapur">
+                    <div class="child-1">
+                        <div>
+                        <h4>State</h4>
+                        <input type="text" id="name-1" placeholder="Maharastra">
+                    </div>
+                    <div>
+                        <h4>Zip</h4>
+                        <input type="number" id="name-1" placeholder="416505">
+                    </div>
+                    </div>
+                   
+                    <h4><input type="checkbox">Shipping address same as billing</h4>
+                    
+                    
+            </div>
+            <div class="payment">
+                <h3>Payment</h3>
+                <h4>Accepted Cards</h4>
+                <div class="child-2">
+                    <img src="https://img.icons8.com/color/96/visa.png" alt="error">
+                <img src="https://d28wu8o6itv89t.cloudfront.net/images/mastercardlogopng-1579603310730.png" alt="error">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvH5uO-fWcElc40mS7nRE53FUoYiG3TchjXgb-5vDDYD-Rw_3pkz4_oXR0LVWgwTaz4MA&usqp=CAU" alt="error">
+                <img src="https://w7.pngwing.com/pngs/494/853/png-transparent-discover-card-discover-financial-services-credit-card-debit-card-american-express-credit-card-text-orange-logo.png" alt="error">
+                </div>
+                <h4>Name on Card</h4>
+                <input type="text" id="name" placeholder="Sayali Jadhav">
+                <h4>Credit card number</h4>
+                <input type="number"id="name" placeholder="1111-2222-3333-4444">
+                <h4>Exp Month</h4>
+                <input type="text" id="name" placeholder="Saptember">
+                <div class="child-1">
+                    <div>
+                    <h4>Exp Year</h4>
+                    <input type="number"id="name-1" placeholder="2018">
+                </div>
+                <div>
+                    <h4>CVV</h4>
+                    <input type="number" id="name-1" placeholder="352">
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card-2">
+            <div id="first">
+                <h3>Cart</h3>
+                <div id="cartpic">
+                    
+                    <img id="cart" src="https://img.icons8.com/material-outlined/48/shopping-cart--v1.png" alt="error">
+                    <h2 id="total">0</h2>
+                </div>
+            </div>
+           <div id="minicontainer">
+
+           </div>
+           <div id="total">
+            <h2>Total</h2>
+            <h2 id="totalPrice">0</h2>
+           </div>
+        </div>
+    </div>
+    <button id="order">Place Order</button>
+</div>
+</body>
+<script>
+    let container=document.getElementById("minicontainer");
+    let orderBtn=document.getElementById("order");
+    let cartData2=JSON.parse(localStorage.getItem("cart"));
+    if(cartData2==null){
+        cartData2=[];
+    }
+
+    orderBtn.addEventListener("click",()=>{
+        alert("Order placed successfully!")
+        window.location.href="index.html";
+    })
+    // function desplay(cartData2){
+    //     let total=document.getElementById("totalPrice");
+    //     let count=document.getElementById("total");
+    //     count.innerText=cartData2.length;
+    //     container.innerHTML="";
+    //     cartData2.forEach((product)=>{
+
+    //         let card=document.createElement("div");
+
+    //         let title=document.createElement("h5");
+    //         title.innerText=product.title;
+
+    //         let price=document.createElement("h4");
+    //         price.innerText=`₹${product.price}`;
+
+    //         card.append(title,price);
+    //         container.append(card);
+
+    //         let sum=0;
+    //         for(let i=0;i<cartData2.length;i++){
+    //             sum+=product.price
+    //         }
+
+    //         total.innerText=`₹${sum}`;
+    //     })
+    // }
+    // desplay(cartData2);
+
+</script>
+</html>

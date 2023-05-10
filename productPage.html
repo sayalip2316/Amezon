@@ -11,9 +11,12 @@
             display: flex;
             gap:10px;
             box-sizing: border-box;
+            background-color:#E3E6E6;
         }
         .MainCont>div:nth-child(1){
             width:20%;
+            /* position: fixed; */
+            /* position: -webkit-sticky; */
         }
          #mobileCont{
           width:80%;
@@ -28,6 +31,8 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         box-sizing: border-box;
         padding: 20px;
+        border-radius: 10px;
+        background-color: white;
         }
         .card>img{
             width: 100%;
@@ -36,6 +41,14 @@
         .card>p{
             font-size: 15px;
         }
+        /* #add-to-cart-form>button{
+            display: block;
+            margin: auto;
+            padding: 10px;
+            border-radius: 5px;
+           background-color: #FFC266;
+           border: none;
+        } */
         .card>button{
             display: block;
             margin: auto;
@@ -57,16 +70,21 @@
             margin: 20px;
             background-color: rgb(181, 224, 240);
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-bottom: 50px;
+            border-radius: 10px;
         }
-        #brands>h3{
+        #brands>h2{
             text-align: center;
             margin-bottom: 10px;
         }
+       
         #brands>button{
             width:100%;
+            height:25px;
             display: block;
             margin-bottom: 10px;
             border: 1px solid gray;
+            border-radius: 5px;
         }
         #brands>button:hover{
             cursor: pointer;
@@ -78,28 +96,44 @@
             margin: 20px;
             background-color: rgb(181, 224, 240);
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+            border-radius: 10px;
         }
-        #Price>h3{
+        #Price>h2{
             text-align: center;
             margin-bottom: 10px;
         }
         #Price>button{
             width:100%;
+            height:25px;
             display: block;
             margin-bottom: 10px;
             border: 1px solid gray;
+            border-radius: 5px;
         }
         #Price>button:hover{
             cursor: pointer;
             background-color: skyblue;
+        }
+        #Cart>button{
+            width:95%;
+            height:35px;
+            margin: 20px;
+            font-size: 17px;
+            font-weight: bold;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
     <div class="MainCont">
         <div>
+            <div id="Cart">
+                <button>Go to Cart</button>
+            </div>
             <div id="brands">
-                <h3>Brands</h3>
+                <h2>Brands</h2>
                 <button onclick="samsung()">Samsung</button>
                 <button onclick="redmi()">Redmi</button>
                 <button onclick="realme()">realme</button>
@@ -110,7 +144,7 @@
                 <button onclick="oppo()">Oppo</button>
             </div>
             <div id="Price">
-                <h3>Price</h3>
+                <h2>Price</h2>
                 <button onclick="asc()">Ascending</button>
                 <button onclick="dsc()">Descending</button>
             </div>
@@ -138,6 +172,7 @@
             
             let disp=displayData(arr)
             container.innerHTML=disp;
+            updateUser()
         })
         .catch(err=>console.log(err))
     }
@@ -150,7 +185,7 @@
                 <p>${el.description}</p>
                 <h4>Rating:${el.rating}</h4>
                 <h4>Price:₹${el.price}</h4>
-                <button>Add To Cart</button>
+                <button class="btn" data-id=${el._id}>Add to Cart</button>
                 </div>`
         })
         return ans.join(" ")
@@ -166,6 +201,8 @@
             
             let disp=displayData(arr)
             container.innerHTML=disp;
+
+            updateUser()
         })
         .catch(err=>console.log(err))
     }
@@ -178,7 +215,7 @@
                 <p>${el.description}</p>
                 <h4>Rating:${el.rating}</h4>
                 <h4>Price:₹${el.price}</h4>
-                <button>Add To Cart</button>
+                <button class="btn" data-id=${el._id}>Add To Cart</button>
                 </div>`
         })
         return ans.join(" ")
@@ -497,4 +534,128 @@ const oppo=()=>{
         return ans.join(" ")
     }
 }
+const asc=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/asc/1")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+
+const dsc=()=>{
+    function getNotes(){
+        fetch("http://localhost:4500/mobile/dsc/1")
+        .then(res=>res.json())
+        .then(res=>{
+            
+            let arr=res.data;
+            
+            let disp=displayData(arr)
+            container.innerHTML=disp;
+        })
+        .catch(err=>console.log(err))
+    }
+    getNotes()
+
+    function displayData(data){
+        let ans=data.map((el,i)=>{
+            return `<div class="card">
+                <img src="${el.image}" alt="err">
+                <p>${el.description}</p>
+                <h4>Rating:${el.rating}</h4>
+                <h4>Price:₹${el.price}</h4>
+                <button>Add To Cart</button>
+                </div>`
+        })
+        return ans.join(" ")
+    }
+}
+
+let cartData=JSON.parse(localStorage.getItem("mobile"));
+    if(cartData==null){
+        cartData=[];
+    }
+function updateUser(){
+let cardBtn=document.querySelectorAll(".btn")
+for(let btn of cardBtn){
+    btn.addEventListener("click",function(e){
+        e.preventDefault();
+        let id=e.target.dataset.id
+        
+        fetch(`http://localhost:4500/mobile/findById/${id}`,{
+            method:"GET",
+            headers:{
+                "Content-type":"application/json",
+
+            }
+        }).then(res=>res.json()).then((res)=>{
+            //console.log(res)
+            let payload={
+                image:res[0].image,
+                description:res[0].description,
+                rating:res[0].rating,
+                price:res[0].price
+            }
+           //console.log(payload)
+            fetch("http://localhost:4500/buy/add",{
+                method:"POST",
+                headers:{
+                    "Content-type":"application/json",
+                    "Authorization":`Bearer ${localStorage.getItem("token")}`
+                },
+                body:JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then((res)=>{
+                alert(res.msg)
+            })
+            // cartData.push(res)
+            // localStorage.setItem("mobile",JSON.stringify(cartData))
+            // alert("Product added to the cart")
+        }).catch((err)=>{
+            console.log(err)
+        })
+    })
+}
+    }
+ 
+
+    // Send a POST request to the backend to add the product to the cart
+    // fetch('/cart/add', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ id, name, price }),
+    //   headers: { 'Content-Type': 'application/json' }
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   if (data.success) {
+    //     alert('Product added to cart!');
+    //   } else {
+    //     alert('Failed to add product to cart!');
+    //   }
+    // })
+    // .catch(error => console.error(error));
+//   });
+
+
 </script>
