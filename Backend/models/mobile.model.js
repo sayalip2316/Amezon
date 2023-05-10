@@ -5,6 +5,7 @@ const mobileSchema=mongoose.Schema({
    description:{type:String,required:true},
    rating:{type:Number,required:true},
    price:{type:Number,required:true},
+   userID:{type:String,required:true}
 },{
     versionKey:false
 })
